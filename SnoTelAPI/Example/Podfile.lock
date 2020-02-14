@@ -1,0 +1,31 @@
+PODS:
+  - Nimble (7.3.4)
+  - Quick (1.2.0)
+  - SnoTelAPI (0.1.0):
+    - SwiftCSV
+  - SwiftCSV (0.5.5)
+
+DEPENDENCIES:
+  - Nimble (~> 7.0)
+  - Quick (~> 1.2.0)
+  - SnoTelAPI (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Nimble
+    - Quick
+    - SwiftCSV
+
+EXTERNAL SOURCES:
+  SnoTelAPI:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  SnoTelAPI: 2017c049b8fb0c8151158cbd3dbcec4e61fde809
+  SwiftCSV: 13e494244a4a65c3ff71002444491026de625643
+
+PODFILE CHECKSUM: c2fc356607ea68d4fab808d4b0886e34da5c15b8
+
+COCOAPODS: 1.8.4

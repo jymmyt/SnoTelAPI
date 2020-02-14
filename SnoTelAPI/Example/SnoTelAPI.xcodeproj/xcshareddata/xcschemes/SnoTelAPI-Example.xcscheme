@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "SnoTelApi_Example.app"
-               BlueprintName = "SnoTelApi_Example"
-               ReferencedContainer = "container:SnoTelApi.xcodeproj">
+               BuildableName = "SnoTelAPI_Example.app"
+               BlueprintName = "SnoTelAPI_Example"
+               ReferencedContainer = "container:SnoTelAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "SnoTelApi_Tests.xctest"
-               BlueprintName = "SnoTelApi_Tests"
-               ReferencedContainer = "container:SnoTelApi.xcodeproj">
+               BuildableName = "SnoTelAPI_Tests.xctest"
+               BlueprintName = "SnoTelAPI_Tests"
+               ReferencedContainer = "container:SnoTelAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -48,9 +48,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "SnoTelApi_Tests.xctest"
-               BlueprintName = "SnoTelApi_Tests"
-               ReferencedContainer = "container:SnoTelApi.xcodeproj">
+               BuildableName = "SnoTelAPI_Tests.xctest"
+               BlueprintName = "SnoTelAPI_Tests"
+               ReferencedContainer = "container:SnoTelAPI.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -58,9 +58,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "SnoTelApi_Example.app"
-            BlueprintName = "SnoTelApi_Example"
-            ReferencedContainer = "container:SnoTelApi.xcodeproj">
+            BuildableName = "SnoTelAPI_Example.app"
+            BlueprintName = "SnoTelAPI_Example"
+            ReferencedContainer = "container:SnoTelAPI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -82,9 +82,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "SnoTelApi_Example.app"
-            BlueprintName = "SnoTelApi_Example"
-            ReferencedContainer = "container:SnoTelApi.xcodeproj">
+            BuildableName = "SnoTelAPI_Example.app"
+            BlueprintName = "SnoTelAPI_Example"
+            ReferencedContainer = "container:SnoTelAPI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -101,9 +101,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "SnoTelApi_Example.app"
-            BlueprintName = "SnoTelApi_Example"
-            ReferencedContainer = "container:SnoTelApi.xcodeproj">
+            BuildableName = "SnoTelAPI_Example.app"
+            BlueprintName = "SnoTelAPI_Example"
+            ReferencedContainer = "container:SnoTelAPI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

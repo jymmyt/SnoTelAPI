@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IIz-dx-r4i">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Snotel Stations-->
+        <scene sceneID="vQh-zE-Cr5">
+            <objects>
+                <tableViewController title="Snotel Stations" id="I2T-bN-9VR" customClass="StationsViewController" customModule="SnoTelAPI_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XzC-1P-JvD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="8QU-6Z-yqy">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="I2T-bN-9VR" id="J2p-62-tuj"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="jr7-2Q-rYW">
+                                <rect key="frame" x="0.0" y="72" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jr7-2Q-rYW" id="0mY-jb-eiq">
+                                    <rect key="frame" x="0.0" y="0.0" width="348" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="sJw-HR-IBL" kind="show" identifier="ShowSnowData" id="8i4-A1-AWL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="I2T-bN-9VR" id="w41-N6-M9g"/>
+                            <outlet property="delegate" destination="I2T-bN-9VR" id="IFZ-a5-ipp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Snotel Stations" id="vZG-Ca-scl"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WzU-m6-ttk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="119" y="-564"/>
+        </scene>
+        <!--Snotel Station Table View Controller-->
+        <scene sceneID="EA4-kJ-eDj">
+            <objects>
+                <tableViewController id="sJw-HR-IBL" customClass="SnotelStationTableViewController" customModule="SnoTelAPI_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="80" sectionFooterHeight="28" id="9Gf-Kg-ywJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="HYa-Ag-g9C">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVk-Ye-hSB">
+                                    <rect key="frame" x="171.5" y="13.5" width="32" height="15.5"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bBU-Mu-mOT">
+                                    <rect key="frame" x="113" y="35" width="149" height="32"/>
+                                    <segments>
+                                        <segment title="24 hours"/>
+                                        <segment title="48 hours"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="timeSpanChanged:" destination="sJw-HR-IBL" eventType="valueChanged" id="bEb-tj-Vez"/>
+                                    </connections>
+                                </segmentedControl>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Shs-VN-xVL">
+                                    <rect key="frame" x="37.5" y="71" width="300" height="44"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XMa-a4-KhL">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Snow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oS1-Ma-Nuw">
+                                                    <rect key="frame" x="49" y="0.0" width="52.5" height="22"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPc-Xh-SiG">
+                                                    <rect key="frame" x="15" y="22" width="120" height="22"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="UPc-Xh-SiG" firstAttribute="width" secondItem="XMa-a4-KhL" secondAttribute="width" multiplier="0.8" id="Jww-58-uzG"/>
+                                            </constraints>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mZ5-CY-Wf4">
+                                            <rect key="frame" x="150" y="0.0" width="150" height="44"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total H2O" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qiu-3G-4ei">
+                                                    <rect key="frame" x="52" y="0.0" width="46.5" height="22"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmD-Bj-996">
+                                                    <rect key="frame" x="0.0" y="22" width="150" height="22"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bmD-Bj-996" firstAttribute="width" secondItem="mZ5-CY-Wf4" secondAttribute="width" id="xwN-OW-fYj"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="rtd-Og-bWI"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="Shs-VN-xVL" firstAttribute="width" secondItem="HYa-Ag-g9C" secondAttribute="width" multiplier="0.8" id="34f-VI-Jch"/>
+                                <constraint firstItem="bBU-Mu-mOT" firstAttribute="centerX" secondItem="HYa-Ag-g9C" secondAttribute="centerX" id="PKr-K3-7ji"/>
+                                <constraint firstItem="Shs-VN-xVL" firstAttribute="centerX" secondItem="HYa-Ag-g9C" secondAttribute="centerX" id="WWe-0F-79R"/>
+                                <constraint firstItem="tVk-Ye-hSB" firstAttribute="centerY" secondItem="HYa-Ag-g9C" secondAttribute="centerY" multiplier="0.35" id="e5T-Mg-Iha"/>
+                                <constraint firstAttribute="bottom" secondItem="Shs-VN-xVL" secondAttribute="bottom" constant="5" id="jMD-zT-Eeu"/>
+                                <constraint firstItem="tVk-Ye-hSB" firstAttribute="centerX" secondItem="HYa-Ag-g9C" secondAttribute="centerX" id="maY-VX-rLM"/>
+                                <constraint firstItem="bBU-Mu-mOT" firstAttribute="top" secondItem="tVk-Ye-hSB" secondAttribute="bottom" constant="6" id="zEJ-dO-n9f"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SnowDataCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SnowDataCell" id="U3U-Ik-9uX" customClass="SnowDataTableViewCell" customModule="SnoTelAPI_Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="148" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U3U-Ik-9uX" id="FAR-hW-SeL">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcT-1B-H1i">
+                                            <rect key="frame" x="10" y="14" width="34" height="15.5"/>
+                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YV4-Rx-AE5">
+                                            <rect key="frame" x="64" y="15.5" width="27" height="13"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hS-0R-nr7">
+                                            <rect key="frame" x="97" y="15.5" width="27" height="13"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="YV4-Rx-AE5" firstAttribute="centerY" secondItem="RcT-1B-H1i" secondAttribute="centerY" id="0SZ-89-Y2w"/>
+                                        <constraint firstItem="RcT-1B-H1i" firstAttribute="leading" secondItem="FAR-hW-SeL" secondAttribute="leading" constant="10" id="6eR-Oy-Ns2"/>
+                                        <constraint firstItem="YV4-Rx-AE5" firstAttribute="leading" secondItem="RcT-1B-H1i" secondAttribute="trailing" constant="20" id="CKp-6z-8Hz"/>
+                                        <constraint firstItem="RcT-1B-H1i" firstAttribute="centerY" secondItem="FAR-hW-SeL" secondAttribute="centerY" id="bSA-tP-JE8"/>
+                                        <constraint firstItem="7hS-0R-nr7" firstAttribute="centerY" secondItem="YV4-Rx-AE5" secondAttribute="centerY" id="g3n-zr-6jl"/>
+                                        <constraint firstItem="7hS-0R-nr7" firstAttribute="leading" secondItem="YV4-Rx-AE5" secondAttribute="trailing" constant="6" id="phg-FY-7sp"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="accumulatedSnowLabel" destination="7hS-0R-nr7" id="zFM-MU-Foz"/>
+                                    <outlet property="dateLabel" destination="RcT-1B-H1i" id="iAB-MP-xNy"/>
+                                    <outlet property="temperatureLabel" destination="YV4-Rx-AE5" id="GBj-hv-7o5"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="sJw-HR-IBL" id="l8Y-6u-XEN"/>
+                            <outlet property="delegate" destination="sJw-HR-IBL" id="BMH-Km-7EO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="tng-57-1GZ"/>
+                    <connections>
+                        <outlet property="stationNameLabel" destination="tVk-Ye-hSB" id="6jx-Ww-7lK"/>
+                        <outlet property="timeSpanSwitch" destination="bBU-Mu-mOT" id="NUD-kQ-xRK"/>
+                        <outlet property="totalH2OLabel" destination="bmD-Bj-996" id="I1e-rm-vEj"/>
+                        <outlet property="totalSnowLabel" destination="UPc-Xh-SiG" id="CCw-Nf-Avh"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TWL-eb-gJI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="905" y="-566"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TPT-YS-SyL">
+            <objects>
+                <navigationController id="IIz-dx-r4i" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="X2y-Vj-DoD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="I2T-bN-9VR" kind="relationship" relationship="rootViewController" id="56F-eB-40N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cPH-eN-wE3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-626" y="-564"/>
+        </scene>
+    </scenes>
+</document>

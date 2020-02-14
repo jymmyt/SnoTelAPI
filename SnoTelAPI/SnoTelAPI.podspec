@@ -1,5 +1,5 @@
 #
-# Be sure to run `pod lib lint SnoTelApi.podspec' to ensure this is a
+# Be sure to run `pod lib lint SnoTelAPI.podspec' to ensure this is a
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
@@ -7,9 +7,10 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'SnoTelApi'
+  s.name             = 'SnoTelAPI'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of SnoTelApi.'
+  s.summary          = 'An iOS SDK for the Powder lines api at : http://powderlin.es/api.html'
+  s.swift_version    = '5.0'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,25 +19,27 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+An iOS SDK for the Powder lines api at : http://powderlin.es/api.html
+The sdk uses Swift 5, and the new Combine iOS framework
                        DESC
 
-  s.homepage         = 'https://github.com/Jim Terhorst/SnoTelApi'
+  s.homepage         = 'https://github.com/jymmyt/SnoTelAPI'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Jim Terhorst' => 'jterhorst@beddrsleep.com' }
-  s.source           = { :git => 'https://github.com/Jim Terhorst/SnoTelApi.git', :tag => s.version.to_s }
+  s.author           = { 'Jim Terhorst' => 'jymter@gmail.com' }
+  s.source           = { :git => 'https://github.com/jymmyt/SnoTelAPI.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '13.0'
 
-  s.source_files = 'SnoTelApi/Classes/**/*'
+  s.source_files = 'Classes/**/*'
+  
   
   # s.resource_bundles = {
-  #   'SnoTelApi' => ['SnoTelApi/Assets/*.png']
+  #   'SnoTelAPI' => ['SnoTelAPI/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'SwiftCSV'
 end
