@@ -28,7 +28,7 @@ fileprivate enum Section {
 }
 
 class StationsViewController: UITableViewController, UISearchBarDelegate {
-    let reuseIdentifer = "Cell"
+    let reuseIdentifer = "StationCell"
     
     fileprivate var diffableDataSource: UITableViewDiffableDataSource<Section, Station>!
     private var subscriptions = Set<AnyCancellable>()

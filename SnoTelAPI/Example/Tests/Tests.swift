@@ -21,7 +21,7 @@ let SnowDataSampleCSV = """
 #------------------------------------------------------------------------------------------------------
 #
 # Reporting Frequency: Hourly
-# Date Range: 2020-02-11 00:00 to 2020-02-13 11:00
+# Date Range: 2020-02-17 00:00 to 2020-02-19 04:00
 #
 # Data for the following site(s) are contained in this file:
 #
@@ -60,71 +60,65 @@ let SnowDataSampleCSV = """
 #
 # Red Mountain Pass (713)
 # Colorado  SNOTEL Site - 11200 ft
-# Reporting Frequency: Hourly; Date Range: 2020-02-11 00:00 to 2020-02-13 11:00
+# Reporting Frequency: Hourly; Date Range: 2020-02-17 00:00 to 2020-02-19 04:00
 #
-# As of: Feb 13, 2020 11:29:23 AM GMT-08:00
+# As of: Feb 19, 2020 4:36:18 AM GMT-08:00
 #
 Date,Snow Water Equivalent (in),Change In Snow Water Equivalent (in),Snow Depth (in),Change In Snow Depth (in),Precipitation Accumulation (in),Air Temperature Observed (degF)
-2020-02-11 00:00,16.9,0.0,65,0,17.0,5
-2020-02-11 01:00,16.8,-0.1,65,0,17.0,5
-2020-02-11 02:00,16.8,0.0,64,-1,17.0,8
-2020-02-11 03:00,16.8,0.0,63,-1,17.0,8
-2020-02-11 04:00,16.8,0.0,62,-1,17.0,7
-2020-02-11 05:00,16.8,0.0,65,3,17.0,3
-2020-02-11 06:00,16.8,0.0,65,0,17.1,3
-2020-02-11 07:00,16.8,0.0,63,-2,17.0,4
-2020-02-11 08:00,16.8,0.0,63,0,17.1,10
-2020-02-11 09:00,16.8,0.0,62,-1,17.0,16
-2020-02-11 10:00,16.8,0.0,63,1,17.0,21
-2020-02-11 11:00,16.9,0.1,62,-1,17.0,24
-2020-02-11 12:00,16.9,0.0,62,0,17.1,30
-2020-02-11 13:00,16.9,0.0,62,0,17.0,29
-2020-02-11 14:00,16.9,0.0,62,0,17.0,26
-2020-02-11 15:00,16.9,0.0,62,0,17.0,25
-2020-02-11 16:00,17.0,0.1,63,1,17.1,17
-2020-02-11 17:00,16.9,-0.1,63,0,17.1,12
-2020-02-11 18:00,16.9,0.0,63,0,17.1,8
-2020-02-11 19:00,16.9,0.0,63,0,17.1,14
-2020-02-11 20:00,16.9,0.0,63,0,17.1,10
-2020-02-11 21:00,16.8,-0.1,63,0,17.1,6
-2020-02-11 22:00,16.8,0.0,63,0,17.1,10
-2020-02-11 23:00,16.8,0.0,63,0,17.1,6
-2020-02-12 00:00,16.8,0.0,63,0,17.1,6
-2020-02-12 01:00,16.8,0.0,63,0,17.1,7
-2020-02-12 02:00,16.8,0.0,63,0,17.1,6
-2020-02-12 03:00,16.8,0.0,63,0,17.1,8
-2020-02-12 04:00,16.8,0.0,63,0,17.1,8
-2020-02-12 05:00,16.8,0.0,62,-1,17.1,7
-2020-02-12 06:00,16.8,0.0,63,1,17.1,7
-2020-02-12 07:00,16.8,0.0,62,-1,17.1,10
-2020-02-12 08:00,16.8,0.0,62,0,17.1,10
-2020-02-12 09:00,16.8,0.0,62,0,17.1,13
-2020-02-12 10:00,16.8,0.0,61,-1,17.1,17
-2020-02-12 11:00,16.8,0.0,62,1,17.1,19
-2020-02-12 12:00,16.9,0.1,61,-1,17.1,20
-2020-02-12 13:00,16.9,0.0,61,0,17.1,24
-2020-02-12 14:00,16.9,0.0,61,0,17.1,23
-2020-02-12 15:00,16.9,0.0,61,0,17.1,19
-2020-02-12 16:00,16.9,0.0,61,0,17.1,14
-2020-02-12 17:00,16.9,0.0,61,0,17.1,10
-2020-02-12 18:00,16.9,0.0,61,0,17.1,5
-2020-02-12 19:00,16.9,0.0,61,0,17.1,3
-2020-02-12 20:00,16.8,-0.1,60,-1,17.1,4
-2020-02-12 21:00,16.8,0.0,61,1,17.1,10
-2020-02-12 22:00,16.8,0.0,61,0,17.1,8
-2020-02-12 23:00,16.8,0.0,61,0,17.1,10
-2020-02-13 00:00,16.8,0.0,61,0,17.1,11
-2020-02-13 01:00,16.8,0.0,62,1,17.1,11
-2020-02-13 02:00,16.8,0.0,61,-1,17.1,10
-2020-02-13 03:00,16.8,0.0,61,0,17.1,9
-2020-02-13 04:00,16.8,0.0,61,0,17.1,10
-2020-02-13 05:00,16.8,0.0,61,0,17.1,10
-2020-02-13 06:00,16.8,0.0,61,0,17.1,9
-2020-02-13 07:00,16.8,0.0,61,0,17.1,12
-2020-02-13 08:00,16.8,0.0,61,0,17.1,14
-2020-02-13 09:00,16.8,0.0,61,0,17.1,19
-2020-02-13 10:00,16.9,0.1,60,-1,17.1,21
-2020-02-13 11:00,16.9,0.0,60,0,17.1,24
+2020-02-17 00:00,17.3,0.0,60,0,17.5,28
+2020-02-17 01:00,17.3,0.0,59,-1,17.4,27
+2020-02-17 02:00,17.3,0.0,60,1,17.4,27
+2020-02-17 03:00,17.3,0.0,60,0,17.4,26
+2020-02-17 04:00,17.3,0.0,60,0,17.4,26
+2020-02-17 05:00,17.3,0.0,60,0,17.4,24
+2020-02-17 06:00,17.3,0.0,60,0,17.4,24
+2020-02-17 07:00,17.3,0.0,60,0,17.4,24
+2020-02-17 08:00,17.3,0.0,60,0,17.4,27
+2020-02-17 09:00,17.3,0.0,60,0,17.4,28
+2020-02-17 10:00,17.3,0.0,59,-1,17.4,30
+2020-02-17 11:00,17.3,0.0,59,0,17.4,30
+2020-02-17 12:00,17.3,0.0,59,0,17.4,28
+2020-02-17 13:00,17.3,0.0,59,0,17.4,30
+2020-02-17 14:00,17.3,0.0,59,0,17.4,32
+2020-02-17 15:00,17.3,0.0,59,0,17.4,31
+2020-02-17 16:00,17.4,0.1,59,0,17.5,23
+2020-02-17 17:00,17.3,-0.1,60,1,17.5,16
+2020-02-17 18:00,17.3,0.0,60,0,17.5,15
+2020-02-17 19:00,17.3,0.0,60,0,17.5,16
+2020-02-17 20:00,17.2,-0.1,60,0,17.5,17
+2020-02-17 21:00,17.2,0.0,60,0,17.5,13
+2020-02-17 22:00,17.2,0.0,60,0,17.5,11
+2020-02-17 23:00,17.2,0.0,60,0,17.5,9
+2020-02-18 00:00,17.3,0.1,60,0,17.5,9
+2020-02-18 01:00,17.2,-0.1,60,0,17.5,10
+2020-02-18 02:00,17.2,0.0,60,0,17.5,10
+2020-02-18 03:00,17.2,0.0,60,0,17.5,11
+2020-02-18 04:00,17.2,0.0,60,0,17.5,14
+2020-02-18 05:00,17.2,0.0,60,0,17.5,11
+2020-02-18 06:00,17.2,0.0,60,0,17.5,8
+2020-02-18 07:00,17.2,0.0,60,0,17.5,8
+2020-02-18 08:00,17.1,-0.1,59,-1,17.5,11
+2020-02-18 09:00,17.2,0.1,59,0,17.5,21
+2020-02-18 10:00,17.2,0.0,58,-1,17.5,27
+2020-02-18 11:00,17.2,0.0,57,-1,17.5,32
+2020-02-18 12:00,17.2,0.0,58,1,17.5,33
+2020-02-18 13:00,17.2,0.0,58,0,17.5,35
+2020-02-18 14:00,17.3,0.1,58,0,17.4,35
+2020-02-18 15:00,17.3,0.0,58,0,17.5,31
+2020-02-18 16:00,17.3,0.0,59,1,17.5,28
+2020-02-18 17:00,17.3,0.0,59,0,17.5,23
+2020-02-18 18:00,17.3,0.0,59,0,17.5,22
+2020-02-18 19:00,17.3,0.0,59,0,17.5,20
+2020-02-18 20:00,17.2,-0.1,59,0,17.5,19
+2020-02-18 21:00,17.2,0.0,59,0,17.5,17
+2020-02-18 22:00,17.2,0.0,59,0,17.5,16
+2020-02-18 23:00,17.2,0.0,59,0,17.5,16
+2020-02-19 00:00,17.2,0.0,59,0,17.5,14
+2020-02-19 01:00,17.2,0.0,59,0,17.5,14
+2020-02-19 02:00,17.2,0.0,59,0,17.5,15
+2020-02-19 03:00,17.2,0.0,59,0,17.5,15
+2020-02-19 04:00,17.2,0.0,59,0,17.5,17
+
 """
 
 let SnowDataSampleString = """
@@ -167,39 +161,66 @@ class TableOfContentsSpec: QuickSpec {
         describe("Models") {
 
             let jsonDecoder = JSONDecoder()
-            jsonDecoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "~", negativeInfinity: "-~", nan: "nan")
+            //jsonDecoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "~", negativeInfinity: "-~", nan: "nan")
+            jsonDecoder.dateDecodingStrategy = .formatted(Date.snotelAPIDateFormatter)
             
             context("SnowData") {
                 
                 it("can remove comments from csv") {
-                    let lines = String.cleanCSV(string: SnowDataSampleCSV)
-                    expect(lines.count) == 61
+                    let lines = String.cleanCSV(string: SnowDataSampleCSV, keyMap: SnowData.keyMap())
+                    expect(lines.count) == 54
                 }
                 
                 it("can convert csv to json") {
-                    let lines = String.cleanCSV(string: SnowDataSampleCSV)
-                    expect(lines.count) == 61
+                    let lines = String.cleanCSV(string: SnowDataSampleCSV, keyMap: SnowData.keyMap())
+                    expect(lines.count) == 54
                     do {
                         let csv: CSV = try CSV(string: lines.joined(separator: "\n"), delimiter: ",")
-                        
+
                         let snowDataPoints = try (csv.namedRows as [Dictionary]).map { (row) in
                             return try jsonDecoder.decode(SnowData.self, fromDict: row)
                         }
-                        expect(snowDataPoints.count) == 60
-                        expect(snowDataPoints[0].snowH20Equivalent) == 16.9
+                        expect(snowDataPoints.count) == 53
+                        expect(snowDataPoints[0].snowH20Equivalent) == 17.3
+                        expect(snowDataPoints[1].airTemperature) == 27.0
                     } catch let err {
                         fail("CSV instancing: \(err)")
                     }
+                }
+            }
+        }
+        describe("API") {
+            context("Stations") {
+                
+            }
+            context("NWS Snow Data") {
+                it ("can get promised data from NWS") {
+                    var subscriptions = Set<AnyCancellable>()
+                    var waiting = true
+                    
+                    SnotelStore.shared.fetchStationDetails(triplet: "713:CO:SNTL", hours: 48)
+                    .sink(receiveCompletion: { (completion) in
+                        if case let .failure(error) = completion {
+                            fail("error: \(error)")
+                            waiting = false
+                        }
+                        }, receiveValue: { (values) in
+                            expect(values.count) > 40
+                            waiting = false
+                        })
+                    .store(in: &subscriptions)
+                    expect(waiting).toEventually(equal(false), timeout: 100)
                     
                 }
-
+                
                 it("can generate NWS URL for Hour") {
                     if let url = SnoTelAPI.SnotelStore.shared.generateNWSURL(triplet:"713:CO:SNTL", hours:48) {
+                        
+                        expect(url.absoluteString).to(contain(["713:CO:SNTL", "-48,0"]), description: "NWS URL for hours")
                         print("URL:\(url.absoluteString)")
                     } else {
                         fail("GenerateNWSURL Hourly")
                     }
-                    expect("🐮") == "🐮"
                 }
                 
                 it("can get data from NWS") {
@@ -212,46 +233,7 @@ class TableOfContentsSpec: QuickSpec {
 
                     print("")
                 }
-                
-                it ("can get promised data from NWS") {
-                    var subscriptions = Set<AnyCancellable>()
-                    var waiting = true
-                    
-                    SnotelStore.shared.fetchStationDetails(triplet: "713:CO:SNTL", hours: 48)
-                    .sink(receiveCompletion: { (completion) in
-                        if case let .failure(error) = completion {
-                            fail("error: \(error)")
-                            waiting = false
-                        }
-                        }, receiveValue: { (values) in
-                            print(" Values \(values)")
-                            let totalAccumulation = SnowData.totalSnow(for: values)
-                            waiting = false
-                        })
-                    .store(in: &subscriptions)
-                    
-                    expect(waiting).toEventually(equal(false), timeout: 100)
-                    
-                }
-
-                it("will eventually pass") {
-                    var time = "passing"
-
-                    DispatchQueue.main.async {
-                        time = "done"
-                    }
-
-                    waitUntil { done in
-                        Thread.sleep(forTimeInterval: 0.5)
-                        expect(time) == "done"
-
-                        done()
-                    }
-                }
             }
-        }
-        describe("API") {
-            
         }
     }
 }

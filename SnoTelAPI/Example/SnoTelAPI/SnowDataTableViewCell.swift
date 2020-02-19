@@ -13,8 +13,34 @@ class SnowDataTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var accumulatedSnowLabel: UILabel!
+    @IBOutlet weak var periodSnowAccumulation: UILabel!
     
     public var station: Station?
+    public var snowData: SnowData? {
+        didSet {
+            if let snowData = self.snowData {
+                self.dateLabel?.text = SnotelStationTableViewController.timeFormatter.string(from: snowData.date)
+                if let airTemperature = self.snowData?.airTemperature {
+                    self.temperatureLabel?.text = "\(airTemperature)"
+                } else {
+                    self.temperatureLabel?.text = "--"
+                }
+                
+                if let snowDepth = snowData.snowDepth {
+                    self.accumulatedSnowLabel?.text = "\(snowDepth)"
+                } else {
+                    self.accumulatedSnowLabel?.text = "--"
+                }
+                
+                if let snowDepthDelta = snowData.snowDepthDelta {
+                    self.periodSnowAccumulation?.text = "\(snowDepthDelta)"
+                } else {
+                    self.periodSnowAccumulation?.text = "--"
+                }
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

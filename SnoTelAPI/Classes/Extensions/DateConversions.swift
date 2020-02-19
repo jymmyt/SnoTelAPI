@@ -18,4 +18,10 @@ extension Date {
     func simpleDateString() -> String {
         return Date.simpleDateFormat.string(from: self)
     }
+    
+    public static let snotelAPIDateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        return dateFormatter
+    }()
 }

@@ -11,6 +11,7 @@ import SwiftCSV
 
 public protocol Convertable {
     static func doubleProperties() -> [String]
+    static func keyMap() -> Dictionary<String, String>
 }
 
 public extension JSONDecoder {
@@ -34,7 +35,8 @@ public extension JSONDecoder {
     }
     
     func decode<T>(_ type: T.Type, fromCSV data: String) throws -> [T] where T: Codable, T: Convertable {
-        let csvData = try CSV(string: data).namedRows
+        let lines = String.cleanCSV(string: data, keyMap: type.keyMap())
+        let csvData = try CSV(string: lines.joined(separator: "\n")).namedRows
         let typedArray = try csvData.map { (dataAsDict) -> T in
             return try self.decode(type, fromDict: dataAsDict)
         }

@@ -10,18 +10,27 @@ import UIKit
 import SnoTelAPI
 import Combine
 
-fileprivate enum Section {
-    case main
+fileprivate class DateSection {
+    
 }
 
-class SnotelStationTableViewController: UITableViewController, UISearchBarDelegate {
+class SnotelStationTableViewController: UITableViewController {
     
     static var reuseIdentifier = "SnowDataCell"
-    fileprivate var diffableDataSource: UITableViewDiffableDataSource<Section, SnowData>!
+    fileprivate var diffableDataSource: UITableViewDiffableDataSource<String, SnowData>!
     private var subscriptions = Set<AnyCancellable>()
     var isFetchingData = CurrentValueSubject<Bool, Never>(false)
     var station : Station?
     var snowData: [SnowData]?
+    var snowDataByDate: Dictionary<String, [SnowData]>?
+    var sectionLabels: [String]?
+    
+    static var timeFormatter = { () -> DateFormatter in
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateStyle = .none
+        timeFormatter.timeStyle = .medium
+        return timeFormatter
+    }()
     
     @IBOutlet weak var stationNameLabel: UILabel!
     @IBOutlet weak var totalSnowLabel: UILabel!
@@ -48,7 +57,7 @@ class SnotelStationTableViewController: UITableViewController, UISearchBarDelega
         $totalH2O.receive(on: DispatchQueue.main).map { (totalH2O) -> String in
             return "\(totalH2O)"
         }
-        .assign(to: \.text, on: self.totalSnowLabel)
+        .assign(to: \.text, on: self.totalH2OLabel)
         .store(in: &subscriptions)
     }
 
@@ -70,7 +79,6 @@ class SnotelStationTableViewController: UITableViewController, UISearchBarDelega
                 }
             }, receiveValue: { [unowned self] in
                 self.generateSnapshot(with: $0)
-                print(" Values \($0)")
                 print("")
             })
             .store(in: &subscriptions)
@@ -78,31 +86,34 @@ class SnotelStationTableViewController: UITableViewController, UISearchBarDelega
     }
     
     private func setupTableView() {
-        
-        diffableDataSource = UITableViewDiffableDataSource<Section, SnowData>(tableView: tableView) { (tableView, indexPath, snowData) -> UITableViewCell? in
+        tableView.register(UINib(nibName: "SnotelStationsHeaderView", bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: "SnotelStationsHeaderView")
+        diffableDataSource = UITableViewDiffableDataSource<String, SnowData>(tableView: tableView) { (tableView, indexPath, snowData) -> UITableViewCell? in
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: SnotelStationTableViewController.reuseIdentifier, for: indexPath) as? SnowDataTableViewCell
-            cell?.dateLabel?.text = snowData.date
-            if let airTemperature = snowData.airTemperature {
-                cell?.temperatureLabel?.text = "\(airTemperature)"
-            } else {
-                cell?.temperatureLabel?.text = "--"
-            }
-            if let snowDepth = snowData.snowDepth {
-                cell?.accumulatedSnowLabel?.text = "\(snowDepth)"
-            } else {
-                cell?.accumulatedSnowLabel?.text = "--"
-            }
+            cell?.snowData = snowData
+            
             return cell
         }
     }
     
     private func generateSnapshot(with snowData: [SnowData]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, SnowData>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(snowData)
-        if let startSnow = snowData.first?.snowDepth, let endSnow = snowData.last?.snowDepth {
-            self.totalSnowfall = endSnow - startSnow
+        var snapshot = NSDiffableDataSourceSnapshot<String, SnowData>()
+        self.snowDataByDate = SnowData.snowDataByDate(for: snowData)
+        if let snowDataByDate = self.snowDataByDate {
+            self.sectionLabels = snowDataByDate.keys.map { (key)  in
+                return key
+            }
+            if let sectionLabels = self.sectionLabels {
+                snapshot.appendSections(sectionLabels)
+                snowDataByDate.forEach { (dateString, snowDataForDate) in
+                    
+                    snapshot.appendItems(snowDataForDate, toSection: dateString)
+                }
+            }
         }
+        
+        self.totalSnowfall = SnowData.totalSnow(for: snowData)
+        
         if let startH2OEquivalent = snowData.first?.snowH20Equivalent,
             let endH2OEquivalent = snowData.last?.snowH20Equivalent {
             self.totalH2O = endH2OEquivalent - startH2OEquivalent
@@ -116,14 +127,18 @@ class SnotelStationTableViewController: UITableViewController, UISearchBarDelega
         present(alertController, animated: true)
     }
     
-    // Mark - UISearchbarDelegate
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-    }
-    
     @IBAction func timeSpanChanged(_ sender: Any) {
         self.fetchStationData()
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SnotelStationsHeaderView") as! SnotelStationDataHeaderView
+        sectionHeader.dateLabel?.text = self.sectionLabels![section]
+        return sectionHeader
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
     
 }

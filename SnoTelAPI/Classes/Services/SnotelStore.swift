@@ -51,12 +51,9 @@ public class SnotelStore {
         self.urlSession.dataTask(with: url) { (data, response, error) in
             print("Responded with \(response.debugDescription)")
             do {
-                if let data = data {
-                    if let dataString = String(data: data, encoding: .utf8) {
-                        let lines = String.cleanCSV(string: dataString)
-                        let objects = try JSONDecoder().decode(SnowData.self, fromCSV: lines.joined(separator: "\n"))
-                        completionHandler(objects)
-                    }
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    let objects = try self.jsonDecoder.decode(SnowData.self, fromCSV: dataString)
+                    completionHandler(objects)
                 }
             } catch let err {
                 print("Decode failed:\(err)")
@@ -84,8 +81,7 @@ public class SnotelStore {
                 }
                 do {
                     if let dataString = String(data: data, encoding: .utf8) {
-                        let lines = String.cleanCSV(string: dataString)
-                        let objects = try JSONDecoder().decode(SnowData.self, fromCSV: lines.joined(separator: "\n"))
+                        let objects = try self.jsonDecoder.decode(SnowData.self, fromCSV: dataString)
                         return objects
                     }
                 } catch let err {
@@ -201,6 +197,7 @@ public class SnotelStore {
 class MyDecoder: JSONDecoder {
     override func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
         let decodedValue = try super.decode(type, from: data)
+        self.dateDecodingStrategy = .formatted(Date.snotelAPIDateFormatter)
         return decodedValue
     }
 }
