@@ -121,7 +121,9 @@ public class SnotelStore {
                         )))
             }
             
-            
+            // The stations API we are using is at : "http://api.powderlin.es"
+            // They do not provide data by the hour there, so that is why the NWS report API
+            // was used to get details for snowfall/snowpack for the stations.
             self.urlSession.dataTaskPublisher(for: url).tryMap { (data, response) -> Data in
                 guard let httpResponse = response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else {
                     throw SnotelStoreAPIError.responseError((response as? HTTPURLResponse)?.statusCode ?? 500)
@@ -151,17 +153,14 @@ public class SnotelStore {
     }
     
     
-    // https://wcc.sc.egov.usda.gov/reportGenerator/view_csv/customSingleStationReport/daily/549:NV:SNTL%7Cid=%22%22%7Cname/2013-01-15,2013-01-18/name,stationId,WTEQ::value,WTEQ::delta,SNWD::value,SNWD::delta,TAVG::delta,TAVG::prevValue?fitToScreen=false
-    
-    
+    // https://wcc.sc.egov.usda.gov/reportGenerator/view_csv/customSingleStationReport/daily/549:NV:SNTL%7Cid=%22%22%7Cname/2013-01-15,2013-01-18/name,stationId,TAVG::value,TMAX::value,TMIN::value,PREC::value,PRCP::value,SNWD::value?fitToScreen=false
     public func generateNWSURL(triplet: String, from startDate: Date, to endDate: Date) -> URL? {
-        
         guard let urlComponents = URLComponents(string:
             """
-            \(baseNWSAPIURL)/reportGenerator/view_csv/customSingleStationReport/hourly/
-            \(triplet)|id=""|name/
-            \(startDate.simpleDateString()),\(endDate.simpleDateString())/
-            WTEQ::value,WTEQ::delta,SNWD::value,SNWD::delta,TAVG::delta,TAVG::prevValue
+            \(baseNWSAPIURL)/reportGenerator/view_csv/customSingleStationReport/hourly/\
+            \(triplet)%7Cid=%22%22%7Cname/\
+            \(startDate.simpleDateString()),\(endDate.simpleDateString())/\
+            WTEQ::value,WTEQ::delta,SNWD::value,SNWD::delta,PREC::value,TOBS::value
             """)
         else {
             return nil
@@ -170,7 +169,11 @@ public class SnotelStore {
         return urlComponents.url
     }
     
+    // The report generator takes a frequency(hourly for our uses here and in the example url below), the station triplet(713:CO:SNTL),
+    // then the hours range, which in this case is "-23,0", which gets the most recent 24 hours, then the strings that specify the values
+    // we are looking for in the report.
     // https://wcc.sc.egov.usda.gov/reportGenerator/view_csv/customSingleStationReport/hourly/start_of_period/713:CO:SNTL%7Cid=%22%22%7Cname/-23,0/TAVG::value,TMAX::value,TMIN::value,PREC::value,PRCP::value,SNWD::value?fitToScreen=false
+    
     public func generateNWSURL(triplet: String, hours: Int) -> URL? {
         let urlString = """
         \(baseNWSAPIURL)/reportGenerator/view_csv/customSingleStationReport/hourly/start_of_period/\

@@ -213,7 +213,16 @@ class TableOfContentsSpec: QuickSpec {
                     
                 }
                 
-                it("can generate NWS URL for Hour") {
+                it("can generate NWS URL for hourly data, for specific dates") {
+                    if let url = SnoTelAPI.SnotelStore.shared.generateNWSURL(triplet: "713:CO:SNTL", from: Date.snotelAPIDateFormatter.date(from: "2019-12-25 00:00")! , to: Date.snotelAPIDateFormatter.date(from: "2019-12-28 00:00")!) {
+                        expect(url.absoluteString).to(contain(["713:CO:SNTL", "2019-12-28"]), description: "NWS URL for hours")
+                    } else {
+                        fail("GenerateNWSURL Hourly")
+                    }
+                }
+                    
+                
+                it("can generate NWS URL for hourly data, from now to the given number of hours ago") {
                     if let url = SnoTelAPI.SnotelStore.shared.generateNWSURL(triplet:"713:CO:SNTL", hours:48) {
                         
                         expect(url.absoluteString).to(contain(["713:CO:SNTL", "-48,0"]), description: "NWS URL for hours")
